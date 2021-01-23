@@ -1,0 +1,46 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+
+                   logicalFilePath="db/changelog/db-changelog-1.0.xml">
+
+    <changeSet id="1.0" author="Pruthwee">
+        <comment>Initial set of tables and constraints</comment>
+        <createTable tableName="priority">
+            <column name="priority_id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="priority_value" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="user">
+            <column name="user_id" type="serial" autoIncrement="true">
+                <constraints primaryKey="false" nullable="false"/>
+            </column>
+            <column name="user_name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="priority_id" type="integer">
+                <constraints nullable="false" foreignKeyName="fk_prm_priority"
+                             references="priority"/>
+            </column>
+            <column name="rating" type="integer">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addUniqueConstraint
+                columnNames="user_name, priority_id"
+                constraintName="user_name_priority_id_composite_constraint_name"
+                tableName="user"/>
+    </changeSet>
+
+    <!--Adding seedData for priority table-->
+    <changeSet id="2.0" author="Pruthwee">
+        <sqlFile path="seedData.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+</databaseChangeLog>
