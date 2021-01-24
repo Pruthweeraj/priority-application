@@ -30,3 +30,5 @@ server:
       charset: UTF-8
       enabled: true
       force: true
+  error:
+    include-message: always

@@ -7,16 +7,14 @@ import javax.persistence.*;
 @Entity
 @Component
 @Table(name = "user")
+@IdClass(UserId.class)
 public class UserVO {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private Long id;
-
     @Column(name = "user_name")
     private String name;
 
+    @Id
     @Column(name = "priority_id")
     private Long priorityId;
 
@@ -27,19 +25,10 @@ public class UserVO {
     public UserVO() {
     }
 
-    public UserVO(Long id, String name, Long priorityId, Integer rating) {
-        this.id = id;
+    public UserVO(String name, Long priorityId, Integer rating) {
         this.name = name;
         this.priorityId = priorityId;
         this.rating = rating;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -68,9 +57,8 @@ public class UserVO {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("User{");
-        sb.append("id=").append(id);
-        sb.append(", name='").append(name).append('\'');
+        final StringBuilder sb = new StringBuilder("UserVO{");
+        sb.append("name='").append(name).append('\'');
         sb.append(", priorityId=").append(priorityId);
         sb.append(", rating=").append(rating);
         sb.append('}');
