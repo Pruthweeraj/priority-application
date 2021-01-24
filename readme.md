@@ -25,11 +25,11 @@ user_id_priority_id : ( composite Primary Key)(UK)
 _**Rest Api**_
 
 1) `Get All Priorities:
-   `**GET** : `http:\localhost:8080/priority-app/priority`
+   `**GET** : `http:\\localhost:8080/priority-app/priority`
 
 
 2) `Save User with Rating:`
-   **POST** : `http:\localhost:8080/priority-app/user`
+   **POST** : `http:\\localhost:8080/priority-app/user`
 
 `Payload:`
 
