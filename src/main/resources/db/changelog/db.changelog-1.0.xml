@@ -17,9 +17,6 @@
         </createTable>
 
         <createTable tableName="user">
-            <column name="user_id" type="serial" autoIncrement="true">
-                <constraints primaryKey="false" nullable="false"/>
-            </column>
             <column name="user_name" type="varchar(128)">
                 <constraints nullable="false"/>
             </column>
