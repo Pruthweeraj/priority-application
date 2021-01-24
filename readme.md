@@ -1,5 +1,11 @@
 # Priority Application
 
+TO Build the Application: (go to the **Priority** application Folder and open cmd)
+`gradlew clean build`
+
+To Run the Application: (go to the **priority** application Folder and open cmd)
+`gradlew clean bootRun`
+
 ## DATABASE SCHEMA
 
 table 1: priority
@@ -56,3 +62,10 @@ _**Rest Api**_
   ]
 }
 ```
+
+`Custom Validations : `
+
+1) If user name is empty.
+2) If Priorities is empty.
+3) If invalid Priority.
+4) If rating is not in 1-5 range.
